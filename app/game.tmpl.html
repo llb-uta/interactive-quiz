@@ -1,0 +1,37 @@
+<md-dialog class='fullscreen' layout='column'>
+	<div flex class='top' layout='row' layout-align='center center'>
+		<img src="img/power/{{vm.getPowerIcon()}}"  width='25%'>
+	</div>
+
+	<div flex class='bottom' layout='column'>
+		<div class='bus' style='text-align: center;margin-top: -25px;margin-bottom: -23px; z-index: 10;'>
+			<img src="img/bus.png" height='40px'>
+		</div>
+		<div class='background' ng-style='{ "animationPlayState" : true ? "running" : "paused" }'></div>
+		<div layout='row' layout-align='center' style='position:relative; margin: 10px 0px;' >
+			<div class='progress'>{{vm.totalTime - vm.currentTime}}</div>
+			<round-progress
+			max="vm.totalTime"
+			current="vm.currentTime"
+			color="#ef5350"
+			bgcolor="#ffee58"
+			radius="25"
+			semi="false"
+			rounded="false"
+			clockwise="true"
+			responsive="false"
+			animation="easeOutCubic"
+			stroke="{{ 5 }}"
+			offset="inherit"> </round-progress>
+		</div>
+		<div flex layout='column'>
+			<span style='text-align: center; color: white;margin-bottom:20px;''>{{vm.questions[vm.currentIndex].question}}</span>
+
+			<div layout='row' layout-wrap>
+				<div flex='50' ng-repeat='answer in vm.questions[vm.currentIndex].answers' layout='row' layout-align='center'>
+					<md-button flex class='md-whiteframe-z2 md-primary md-raised custom-button' ng-class='{"animate": vm.shouldAnimate($index) }' ng-click='vm.answer($index)'> {{answer}} </md-button>
+				</div>
+			</div>
+		</div>
+	</div>
+</md-dialog>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html ng-app='quiz'>
+<head>
+	<title>Quiz Game</title>
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angular_material/1.1.1/angular-material.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-svg-round-progressbar/0.4.4/roundProgress.min.js"></script>
+	
+
+	<script type="text/javascript" src="js/llb.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+	   
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.1/angular-material.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body ng-if='$root.initialized' ng-style='{ "backgroundColor" : $root.fullscreen ? "#ffee58" : "#4cae50" }' layout='column'>
+	<div ng-if="!$root.fullscreen" ' layout='row' layout-align='start center' flex class='tile'>
+		<span class='title md-display-1' style='margin-left: 10px;'> Quiz </span>
+		<div flex style='text-align: center;'>
+			<img src="img/bus.png" style='z-index:10; height:40px;margin-top: 35px;'>
+		</div>
+		<div class='background'></div>
+	</div>
+	<div ng-if="$root.fullscreen" ng-controller='MainController as vm' class='fullscreen md-padding' flex layout='column'>
+		<div layout-fill ng-if='vm.screen == "start"' layout='column'>
+			<md-card class='md-padding md-whiteframe-z3' flex='none'>
+				<p style='text-align: center;'>Hello Citizen!</p>
+				<p >You have been given the task to save the bus!</p>
+				<p >You must answer the questions correctly to keep the electric bus battery charged. Get a question wrong, and your battery power will go down! </p>
+				<p >Answer all ten questions with enough battery life left to avoid angry passengers and get the bus to the station safely! </p>
+			</md-card>
+			<div flex layout='row' layout-align = 'center center'>
+				<md-button class='md-whiteframe-z2 md-primary md-raised custom-button' ng-click='vm.startGame()'>Let's go!</md-button>
+			</div>
+		</div>
+		<div layout-fill ng-if='vm.screen == "success"' layout='column'>
+			<div style='text-align: center;'>
+				<img src="img/happy.png" width='50%' style='max-width: 300px'>
+			</div>
+			<md-card class='md-padding md-whiteframe-z3' >
+				<p style='text-align: center;'>YOU DID IT!</p>
+				<p >You kept the bus charged and made it to the bus station! Look at those happy passengers.</p>
+				<p >Can you succeed again? </p>
+			</md-card>
+			<div flex layout='column' layout-align = 'center center'>
+				<md-button class='md-whiteframe-z2 md-primary md-raised custom-button' ng-click='vm.startGame()'>Let's go!</md-button>
+				<md-button hide class='md-whiteframe-z2 md-primary md-raised custom-button' ng-click='vm.startGame()'>Nah!</md-button>
+			</div>
+		</div>
+		<div layout-fill ng-if='vm.screen == "failure"' layout='column'>
+			<div style='text-align: center;'>
+				<img src="img/angry.png" width='50%' style='max-width: 300px'>
+			</div>
+			<md-card class='md-padding md-whiteframe-z3' >
+				<p style='text-align: center;'>OH NO!</p>
+				<p >You didn’t keep the bus charged! Now the passengers are angry.</p>
+				<p >Redeem yourself and try again? </p>
+			</md-card>
+			<div flex layout='column' layout-align = 'center center'>
+				<md-button class='md-whiteframe-z2 md-primary md-raised custom-button' ng-click='vm.startGame()'>Start Over!</md-button>
+				<md-button hide class='md-whiteframe-z2 md-primary md-raised custom-button' ng-click='vm.startGame()'>No Thanks.</md-button>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

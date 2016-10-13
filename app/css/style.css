@@ -1,0 +1,96 @@
+html, body, iframe
+{
+	margin: 0;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	background-color: #4cae50;
+}
+
+
+.tile
+{
+	z-index:0;
+	color: white;
+}
+
+.tile .background
+{
+	position: absolute;
+	top:0px;
+	left:0px;
+	bottom:3px;
+	width: 100%;
+	animation: animatedBackground 350s linear infinite;
+	background: url(../img/bg_repeat.png);
+	background-repeat: repeat-x;
+	background-position-y: bottom ;
+	z-index:-1;
+}
+
+@keyframes animatedBackground {
+	from { background-position-x: 40000%; }
+	to { background-position-x: 0; }
+}
+
+
+
+.fullscreen .top
+{
+	background-color: #00bcd4;
+	background-image: url('../img/clouds.png');
+	background-repeat: no-repeat;
+	background-position: 50% 15%;
+	background-size: 80% auto;
+}
+
+.fullscreen .bottom
+{
+	background-color: #4cae50;
+}
+
+.fullscreen .bottom .background
+{
+	height: 40px;
+	animation: animatedBackground 350s linear infinite;
+	background: url(../img/bg_repeat.png);
+	background-repeat: repeat-x;
+	background-position-y: bottom ;
+
+}
+
+
+.custom-button
+{
+	text-transform: none;
+}
+
+md-dialog.fullscreen
+{
+	min-height: 95%;
+    min-width: 95%;
+}
+
+md-dialog .progress
+{
+	top: 50%;
+    bottom: auto;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    font-size: 14px;
+    position: absolute;
+    color: #fff;
+    font-weight: 100;
+    line-height: 1;
+    margin-top: -2px;
+}
+
+md-dialog button.animate
+{
+	animation: pulse 0.8s linear infinite !important;
+}
+
+@keyframes pulse {
+	0%   { background-color: #ef5350 ; }
+	50% { background-color: #4cae50; }
+	100% { background-color: #ef5350; }
+}
